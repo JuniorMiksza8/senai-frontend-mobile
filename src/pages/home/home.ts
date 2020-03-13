@@ -21,6 +21,6 @@ export class HomePage {
   }
   
   login(){
-    this.navCtrl.setRoot('PainelPage')
+    this.navCtrl.setRoot('TabsPage')
   }
 }
