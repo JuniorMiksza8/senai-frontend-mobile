@@ -13,7 +13,9 @@ export class RegistrarPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RegistrarPage');
+    
   }
+
+  
 
 }
