@@ -20,18 +20,18 @@
     <form>
 
       <ion-item>
-        <b><ion-label stacked color="primary">CPF</ion-label></b>
+        <ion-label stacked color="dark">CPF</ion-label>
         <ion-input type="text"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label stacked color="primary">SENHA</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-label stacked color="dark">SENHA</ion-label>
+        <ion-input type="password"></ion-input>
       </ion-item>
 
-      <button ion-button block (click)="login()">entrar</button>
+      <button ion-button block color="dark" margin-top (click)="login()">entrar</button>
     </form>
 
-      <button ion-button block outline (click)="signIn()">registrar</button>
+      <button ion-button block outline color="dark" (click)="signIn()">registrar</button>
 
 </ion-content>

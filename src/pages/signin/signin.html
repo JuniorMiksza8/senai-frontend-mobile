@@ -14,38 +14,68 @@
   </div>
 
 
-    <ion-item >
-      <ion-label stacked color="dark">Razão Social</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
+    <form [formGroup]="formGroup" (ngSubmit)="signUp();$event.preventDefault()">
 
-    <ion-item>
-      <ion-label stacked color="dark">Cnpj</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
+      <ion-item >
+        <ion-label stacked color="dark">Razão Social</ion-label>
+        <ion-input type="text" formControlName="razaoSocial"></ion-input>
+      </ion-item>
+  
+      <p  class="danger" *ngIf="formGroup.controls['razaoSocial'].dirty && formGroup.controls['razaoSocial'].errors" margin-left>Valor inválido</p>
+
+      <ion-item>
+        <ion-label stacked color="dark">Cnpj</ion-label>
+        <ion-input type="text" formControlName="cnpj"></ion-input>
+      </ion-item>
+  
+      <p  class="danger" *ngIf="formGroup.controls['cnpj'].dirty && formGroup.controls['cnpj'].errors" margin-left>Valor inválido</p>
+
+      <ion-item>
+        <ion-label stacked color="dark">Email</ion-label>
+        <ion-input type="text" formControlName="email"></ion-input>
+      </ion-item>
+  
+      <p  class="danger" *ngIf="formGroup.controls['email'].dirty && formGroup.controls['email'].errors" margin-left>Valor inválido</p>
+
+      <ion-item>
+        <ion-label stacked color="dark">Cidade</ion-label>
+        <ion-input type="text" formControlName="cidade"></ion-input>
+      </ion-item>
+  
+      <p  class="danger" *ngIf="formGroup.controls['cidade'].dirty && formGroup.controls['cidade'].errors" margin-left>Valor inválido</p>
+
+      <ion-item>
+        <ion-label stacked color="dark">Estado</ion-label>
+        <ion-input type="text" formControlName="estado"></ion-input>
+      </ion-item>
+  
+      <p  class="danger" *ngIf="formGroup.controls['estado'].dirty && formGroup.controls['estado'].errors" margin-left>Valor inválido</p>
+
+      <ion-item>
+        <ion-label stacked color="dark">Cep</ion-label>
+        <ion-input type="text" formControlName="cep"></ion-input>
+      </ion-item>
+  
+      <p  class="danger" *ngIf="formGroup.controls['cep'].dirty && formGroup.controls['cep'].errors" margin-left>Valor inválido</p>
+
+      <ion-item>
+        <ion-label stacked color="dark">Rua</ion-label>
+        <ion-input type="text" formControlName="rua"></ion-input>
+      </ion-item>
+  
+      <p  class="danger" *ngIf="formGroup.controls['rua'].dirty && formGroup.controls['rua'].errors" margin-left>Valor inválido</p>
+
+      <ion-item>
+        <ion-label stacked color="dark">Bairro</ion-label>
+        <ion-input type="text" formControlName="bairro"></ion-input>
+      </ion-item>
+
+      <p  class="danger" *ngIf="formGroup.controls['bairro'].dirty && formGroup.controls['bairro'].errors" margin-left>Valor inválido</p>
+
+      <button type="submit" ion-button block class="mt-5" color="dark">PROXIMO</button>
+
+    </form>
 
     
-
-    <ion-item>
-      <ion-label stacked color="dark">Cidade</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label stacked color="dark">Cep</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label stacked color="dark">Rua</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label stacked color="dark">Bairro</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-
-    <button ion-button block class="mt-5" color="dark">PROXIMO</button>
 
 </ion-content>
