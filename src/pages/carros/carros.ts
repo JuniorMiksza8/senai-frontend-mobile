@@ -13,7 +13,7 @@ export class CarrosPage {
 
   Items : Array<Veiculo> = [];
   categorias : Array<Categoria> = [];
-  disponibilidade : string = '1';
+  disponibilidade : string = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.initializeItems();
@@ -26,9 +26,11 @@ export class CarrosPage {
   }
 
   initializeItems(){
-    let obj = {placa : 'QXE-9399',marca : 'Fiat',modelo : 'Uno',categoria : 'Carros'};
+    let obj = {placa : 'QXE-9399',marca : 'Fiat',modelo : 'Uno',categoria : 'Carros',situacao : 'disponivel'};
+    let obj2 = {placa : 'GJX-8740',marca : 'Honda',modelo : 'Titan',categoria : 'Motos',situacao : 'disponivel'};
     this.Items = [
-      obj
+      obj,
+      obj2
     ];
   }
 
@@ -41,14 +43,20 @@ export class CarrosPage {
     ];
   }
 
-  getCarsByCategoria(categoria : string){
+  getCarsByCategoriaAndDisponiblidade(categoria : string){
     let items : Array<Veiculo> = this.Items; 
     let itemsOfCategoria : Array<Veiculo> = [];
-    items.forEach(function(value){
+    let disponibilidade = this.disponibilidade;
+    items.forEach(function(value){  
+
       if(value.categoria.toLowerCase() == categoria.toLowerCase()){
-        itemsOfCategoria.push(value);       
-      }    
+        if(disponibilidade == value.situacao || disponibilidade == ''){
+          itemsOfCategoria.push(value);
+        }       
+      }  
+
     });
+
     return itemsOfCategoria;
   }   
 

@@ -11,20 +11,19 @@
     <ion-item>
       <ion-label>Disponiblidade</ion-label>
       <ion-select [(ngModel)]="disponibilidade" (ionChange)="setDisponiblidade()">
-        <ion-option value="0">Todos</ion-option>
-        <ion-option value="1">Disponivel</ion-option>
-        <ion-option value="2">Em uso</ion-option>
-        <ion-option value="3">suspenso</ion-option>
+        <ion-option value="" selected>Todos</ion-option>
+        <ion-option value="disponivel">Disponivel</ion-option>
+        <ion-option value="emUso">Em uso</ion-option>
+        <ion-option value="suspenso">suspenso</ion-option>
       </ion-select>
     </ion-item>
   </ion-list>
 
   <div padding>
     <ion-segment [(ngModel)]="Items.modelo" color="dark">
-      <ion-segment-button *ngFor="let categoria of categorias" value="{{categoria.nome}}" >
+      <ion-segment-button *ngFor="let categoria of categorias"  value="{{categoria.nome}}" >
         {{categoria.nome}}
       </ion-segment-button>
-      
     </ion-segment>
   </div>
   
@@ -36,7 +35,7 @@
 
       <ion-list *ngSwitchCase="obj.nome">
 
-        <ion-item-sliding *ngFor="let item of getCarsByCategoria(obj.nome)">
+        <ion-item-sliding *ngFor="let item of getCarsByCategoriaAndDisponiblidade(obj.nome)">
   
           <ion-item>
             <ion-thumbnail item-start>
@@ -44,7 +43,7 @@
             </ion-thumbnail>
             <h2>{{item.placa}}</h2>
             <h3> {{ item.modelo }} </h3>
-            <ion-badge item-end>disponivel</ion-badge>
+            <ion-badge item-end>{{item.situacao}}</ion-badge>
           </ion-item>
   
           <ion-item-options side="left">
@@ -75,7 +74,7 @@
 
     </div>
   
-    
+    <h2 *ngIf=""></h2>
   </div>
 
   <ion-fab bottom right>
