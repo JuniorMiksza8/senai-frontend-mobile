@@ -1,11 +1,11 @@
 
 <ion-header>
   <ion-navbar>
-    <ion-title>carros</ion-title>
+    <ion-title>{{title}}</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content >
 
   <ion-list>
     <ion-item>
@@ -19,23 +19,13 @@
     </ion-item>
   </ion-list>
 
-  <div padding>
-    <ion-segment [(ngModel)]="Items.modelo" color="dark">
-      <ion-segment-button *ngFor="let categoria of categorias"  value="{{categoria.nome}}" >
-        {{categoria.nome}}
-      </ion-segment-button>
-    </ion-segment>
-  </div>
-  
-  <div [ngSwitch]="Items.modelo">
 
-    <!-- <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar> <!-->
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
 
-    <div *ngFor="let obj of categorias">
+    
 
-      <ion-list *ngSwitchCase="obj.nome">
-
-        <ion-item-sliding *ngFor="let item of getCarsByCategoriaAndDisponiblidade(obj.nome)">
+      <ion-list>
+        <ion-item-sliding *ngFor="let item of getCarsByCategoriaAndDisponiblidade()">
   
           <ion-item>
             <ion-thumbnail item-start>
@@ -72,10 +62,9 @@
   
       </ion-list> 
 
-    </div>
+      
   
-    <h2 *ngIf=""></h2>
-  </div>
+  
 
   <ion-fab bottom right>
     <button ion-fab mini color="light"><ion-icon name="add-circle" color="dark" class="add"></ion-icon></button>

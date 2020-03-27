@@ -5,5 +5,5 @@ export interface Veiculo{
     situacao : string,
     km? : number,
     tipo? : string,
-    categoria? : string
+    categoria_id? : number
 }

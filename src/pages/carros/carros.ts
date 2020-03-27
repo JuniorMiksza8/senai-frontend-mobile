@@ -11,57 +11,58 @@ import { Categoria } from '../../models/categoria';
 })
 export class CarrosPage {
 
+  title : string;
   Items : Array<Veiculo> = [];
-  categorias : Array<Categoria> = [];
+  Categoria : Categoria;
   disponibilidade : string = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.initializeItems();
-    this.initializeCategorias();
+    this.Categoria = this.navParams.get('Categoria');
+    this.title = this.Categoria.nome;
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CarrosPage');
+  ionViewDidLoad() { 
     
   }
 
   initializeItems(){
-    let obj = {placa : 'QXE-9399',marca : 'Fiat',modelo : 'Uno',categoria : 'Carros',situacao : 'disponivel'};
-    let obj2 = {placa : 'GJX-8740',marca : 'Honda',modelo : 'Titan',categoria : 'Motos',situacao : 'disponivel'};
+    let obj = {placa : 'QXE-9399',marca : 'Fiat',modelo : 'Uno',categoria_id : 0,situacao : 'disponivel'};
+    let obj2 = {placa : 'GJX-8740',marca : 'Honda',modelo : 'Titan',categoria_id : 1,situacao : 'disponivel'};
     this.Items = [
       obj,
       obj2
     ];
   }
 
-  initializeCategorias(){
-    let obj1 = {id : 0,nome : 'Carros'};
-    let obj2 = {id : 1,nome : 'Motos'};
-    this.categorias = [
-      obj1,
-      obj2
-    ];
-  }
-
-  getCarsByCategoriaAndDisponiblidade(categoria : string){
+  getCarsByCategoriaAndDisponiblidade(){
     let items : Array<Veiculo> = this.Items; 
     let itemsOfCategoria : Array<Veiculo> = [];
     let disponibilidade = this.disponibilidade;
-    items.forEach(function(value){  
-
-      if(value.categoria.toLowerCase() == categoria.toLowerCase()){
-        if(disponibilidade == value.situacao || disponibilidade == ''){
-          itemsOfCategoria.push(value);
-        }       
-      }  
-
+    let Categoria = this.Categoria; 
+    items.forEach(function(value){
+      if(value.categoria_id == Categoria.id &&  (value.situacao == disponibilidade || disponibilidade == '') ){
+        itemsOfCategoria.push(value);
+      }
     });
-
     return itemsOfCategoria;
   }   
 
   setDisponiblidade(){
     
+  }
+
+  getItems(ev: any) {
+    this.initializeItems();
+
+    const val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.Items = this.Items.filter((item) => {
+        return (item.placa.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
   }
 
 }

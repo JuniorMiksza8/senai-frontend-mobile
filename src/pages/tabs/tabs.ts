@@ -8,7 +8,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TabsPage {
 
-  tab1Root = 'CarrosPage';
+  tab1Root = 'CategoriasPage';
   tab2Root = 'RegistrarPage';
   tab3Root = 'AgendarPage'
   myIndex : number;
@@ -16,7 +16,7 @@ export class TabsPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TabsPage');
+
   }
 
 }
