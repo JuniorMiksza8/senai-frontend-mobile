@@ -72,7 +72,7 @@
 
       <p  class="danger" *ngIf="formGroup.controls['bairro'].dirty && formGroup.controls['bairro'].errors" margin-left>Valor inválido</p>
 
-      <button type="submit" ion-button block class="mt-5" color="dark">PROXIMO</button>
+      <button type="submit" [disabled]="formGroup.invalid" ion-button block class="mt-5" color="dark">PROXIMO</button>
 
     </form>
 

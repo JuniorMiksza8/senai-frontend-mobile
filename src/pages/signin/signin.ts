@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Empresa } from '../../models/empresa';
 
 /**
  * Generated class for the SigninPage page.
@@ -16,6 +17,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class SigninPage {
 
+  Empresa : Empresa;
   formGroup : FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public formBuilder : FormBuilder) {
@@ -36,7 +38,9 @@ export class SigninPage {
   }
 
   signUp(){
-    console.log(this.formGroup.value);
+    this.Empresa = this.formGroup.value;
+    console.log(this.Empresa);
+    this.navCtrl.push('SignInUserPage',{Empresa : this.Empresa});
   }
 
 }
