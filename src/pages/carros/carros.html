@@ -11,10 +11,10 @@
     <ion-item>
       <ion-label>Disponiblidade</ion-label>
       <ion-select [(ngModel)]="disponibilidade" (ionChange)="setDisponiblidade()">
-        <ion-option value="" selected>Todos</ion-option>
-        <ion-option value="disponivel">Disponivel</ion-option>
-        <ion-option value="emUso">Em uso</ion-option>
-        <ion-option value="suspenso">suspenso</ion-option>
+        <ion-option value="0" selected>Todos</ion-option>
+        <ion-option value="1">Disponivel</ion-option>
+        <ion-option value="2">Em uso</ion-option>
+        <ion-option value="3">suspenso</ion-option>
       </ion-select>
     </ion-item>
   </ion-list>
@@ -29,11 +29,19 @@
   
           <ion-item>
             <ion-thumbnail item-start>
-              <ion-icon name="car" md="ios-car" class="cars"></ion-icon>
+              <img src="../../assets/icon/{{Categoria.nome}}.png" alt="">
             </ion-thumbnail>
             <h2>{{item.placa}}</h2>
             <h3> {{ item.modelo }} </h3>
-            <ion-badge item-end>{{item.situacao}}</ion-badge>
+            
+            <ion-badge *ngIf="item.situacao == 1" item-end color="secondary" style="padding: 7px;border-radius: 15px;"> </ion-badge>
+
+            <ion-badge *ngIf="item.situacao == 2" item-end color="success" style="padding: 7px;border-radius: 15px;"> </ion-badge>
+
+            <ion-badge *ngIf="item.situacao == 3" item-end color="danger" style="padding: 7px;border-radius: 15px;"> </ion-badge>
+
+
+
           </ion-item>
   
           <ion-item-options side="left">

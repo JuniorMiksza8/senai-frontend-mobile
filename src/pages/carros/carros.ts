@@ -14,7 +14,7 @@ export class CarrosPage {
   title : string;
   Items : Array<Veiculo> = [];
   Categoria : Categoria;
-  disponibilidade : string = '';
+  disponibilidade : number = 0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.initializeItems();
@@ -27,11 +27,15 @@ export class CarrosPage {
   }
 
   initializeItems(){
-    let obj = {placa : 'QXE-9399',marca : 'Fiat',modelo : 'Uno',categoria_id : 0,situacao : 'disponivel'};
-    let obj2 = {placa : 'GJX-8740',marca : 'Honda',modelo : 'Titan',categoria_id : 1,situacao : 'disponivel'};
+    let obj = {placa : 'QXE-9399',marca : 'Fiat',modelo : 'Uno',categoria_id : 0,situacao : 1};
+    let obj2 = {placa : 'GJX-8740',marca : 'Honda',modelo : 'Titan',categoria_id : 1,situacao : 1};
+    let obj3 = {placa : 'PJG-5512',marca : 'Ford',modelo : 'Ka',categoria_id : 0,situacao : 2};
+    let obj4 = {placa : 'GJH-2934',marca : 'Honda',modelo : 'Civic',categoria_id : 0,situacao : 3};
     this.Items = [
       obj,
-      obj2
+      obj2,
+      obj3,
+      obj4
     ];
   }
 
@@ -41,7 +45,7 @@ export class CarrosPage {
     let disponibilidade = this.disponibilidade;
     let Categoria = this.Categoria; 
     items.forEach(function(value){
-      if(value.categoria_id == Categoria.id &&  (value.situacao == disponibilidade || disponibilidade == '') ){
+      if(value.categoria_id == Categoria.id &&  (value.situacao == disponibilidade || disponibilidade == 0) ){
         itemsOfCategoria.push(value);
       }
     });
