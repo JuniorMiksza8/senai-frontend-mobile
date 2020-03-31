@@ -1,0 +1,88 @@
+<!--
+  Generated template for the ConfirmSigninPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Confirmação</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h4 text-center color="twitter">Confirme seus dados</h4>
+
+  <ion-card style="border-color: #161414;">
+    <ion-card-header  style="font-weight: bold;background-color: #161414;">
+      <h2 style="color: #fff;">Empresa</h2>
+    </ion-card-header>
+  
+    <ion-list>
+
+      <ion-item>
+        <ion-label stacked color="dark" style="font-weight: bold;">Razão Social</ion-label>
+        <ion-input type="text" disabled="true" style="color:#161414" [(ngModel)]="Empresa.razaoSocial"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked color="dark" style="font-weight: bold;">Cnpj</ion-label>
+        <ion-input type="text" disabled="true" style="color:#161414" [(ngModel)]="Empresa.cnpj"></ion-input>
+      </ion-item>
+
+      <hr margin style="background-color: #161414;">
+      <h2 text-center style="font-weight: bold;">Endereço: </h2>
+
+      <ion-item>
+        <ion-label stacked style="color:#161414"> {{Empresa.cidade}} - {{Empresa.estado}} - {{Empresa.cep}} </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked style="color:#161414">{{Empresa.rua}} - {{Empresa.bairro}} - {{Empresa.numero}}</ion-label>
+      </ion-item>     
+
+    </ion-list>
+  </ion-card>
+
+  <ion-card style="border-color: #161414;">
+    <ion-card-header  style="font-weight: bold;background-color: #161414;">
+      <h2 style="color: #fff;">Administrador</h2>
+    </ion-card-header>
+  
+    <ion-list>
+
+      <ion-item>
+        <ion-label stacked color="dark" style="font-weight: bold;">Nome</ion-label>
+        <ion-input type="text" disabled="true" style="color:#161414" [(ngModel)]="Usuario.nome"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked color="dark" style="font-weight: bold;">Email</ion-label>
+        <ion-input type="text" disabled="true" style="color:#161414" [(ngModel)]="Usuario.email"></ion-input>
+      </ion-item>
+
+      <hr margin style="background-color: #161414;">
+      <h2 text-center style="font-weight: bold;">Dados</h2>
+
+      
+      <ion-item>
+        <ion-label stacked color="dark" style="font-weight: bold;">CPF</ion-label>
+        <ion-input type="text" disabled="true" style="color:#161414" [(ngModel)]="Usuario.cpf"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked color="dark" style="font-weight: bold;">CNH</ion-label>
+        <ion-input type="text" disabled="true" style="color:#161414" [(ngModel)]="Usuario.cnh"></ion-input>
+      </ion-item>
+      
+
+    </ion-list>
+
+    
+  
+  </ion-card>
+
+
+  <button ion-button block color="dark" (click)="finish()">Confirmar</button>
+</ion-content>

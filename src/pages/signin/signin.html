@@ -72,6 +72,13 @@
 
       <p  class="danger" *ngIf="formGroup.controls['bairro'].dirty && formGroup.controls['bairro'].errors" margin-left>Valor inválido</p>
 
+      <ion-item>
+        <ion-label stacked color="dark">Numero</ion-label>
+        <ion-input type="text" formControlName="numero"></ion-input>
+      </ion-item>
+
+      <p  class="danger" *ngIf="formGroup.controls['numero'].dirty && formGroup.controls['numero'].errors" margin-left>Valor inválido</p>
+
       <button type="submit" [disabled]="formGroup.invalid" ion-button block class="mt-5" color="dark">PROXIMO</button>
 
     </form>

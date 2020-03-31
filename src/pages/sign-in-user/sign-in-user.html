@@ -8,13 +8,36 @@
 
   <h5 color="danger" text-center>Agora cadastre o usuario responsavel! </h5>
 
-  <form [formGroup]="formGroup" (ngSubmit)="signUp();$event.preventDefault()">
+  <img src="../../assets/imgs/admin-login-icon-png-6.png" alt="">
+
+  <form [formGroup]="formGroup" (ngSubmit)="next();$event.preventDefault()">
 
   <ion-item>
     <ion-label stacked color="dark">Nome</ion-label>
     <ion-input type="text" formControlName="nome"></ion-input>
   </ion-item>
 
+  <ion-item>
+    <ion-label stacked color="dark">Email</ion-label>
+    <ion-input type="text" formControlName="email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked color="dark">Telefone</ion-label>
+    <ion-input type="text" formControlName="telefone"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked color="dark">CPF</ion-label>
+    <ion-input type="text" formControlName="cpf"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked color="dark">CNH</ion-label>
+    <ion-input type="text" formControlName="cnh"></ion-input>
+  </ion-item>
+
+  <button ion-button block color="dark">Proximo</button>
   </form>
   
 </ion-content>

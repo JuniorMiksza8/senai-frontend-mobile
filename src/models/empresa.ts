@@ -2,7 +2,8 @@ export interface Empresa {
     razaoSocial : string,
     cnpj : string,
     email : string,
-    logradouro : string,
+    cidade : string,
+    estado : string,
     rua : string,
     bairro : string,
     numero : string

@@ -18,10 +18,15 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class SignInUserPage {
 
   Empresa : Empresa;
+  formGroup : FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public formGroup : FormGroup,public formBuilder : FormBuilder) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public formBuilder : FormBuilder) {
     this.formGroup = this.formBuilder.group({
-      
+      nome : ['teste',[Validators.required]],
+      email : ['teste@gmail.com',[Validators.required,Validators.email]],
+      telefone : ['199971481471',[Validators.required]],
+      cnh : ['1823812812',[Validators.required]],
+      cpf : ['1293912391',[Validators.required]]
     });
     
   }
@@ -31,8 +36,10 @@ export class SignInUserPage {
     
   }
 
-  signUp(){
-    
+  next(){
+    let Empresa = this.Empresa;
+    let Usuario = this.formGroup.value;
+    this.navCtrl.push('ConfirmSigninPage',{Empresa : Empresa,Usuario : Usuario});
   }
 
 }

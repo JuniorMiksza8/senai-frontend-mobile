@@ -22,14 +22,15 @@ export class SigninPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public formBuilder : FormBuilder) {
     this.formGroup = this.formBuilder.group({
-      razaoSocial : ['',[Validators.required]],
-      cnpj : ['',[Validators.required,Validators.minLength(14),Validators.maxLength(14)]],
-      cidade : ['',[Validators.required]],
-      estado : ['',[Validators.required]],
-      cep : ['',[Validators.required]],
-      rua : ['',[Validators.required]],
-      bairro : ['',[Validators.required]],
-      email : ['',[Validators.required,Validators.email]]
+      razaoSocial : ['teste',[Validators.required]],
+      cnpj : ['41963011000154',[Validators.required,Validators.minLength(14),Validators.maxLength(14)]],
+      cidade : ['Jaguariuna',[Validators.required]],
+      estado : ['SP',[Validators.required]],
+      cep : ['13920-000',[Validators.required]],
+      rua : ['Maranhão',[Validators.required]],
+      bairro : ['Lot São Pedro',[Validators.required]],
+      numero : ['203',[Validators.required]],
+      email : ['teste@gmail.com',[Validators.required,Validators.email]]
     });
   }
 
@@ -39,7 +40,6 @@ export class SigninPage {
 
   signUp(){
     this.Empresa = this.formGroup.value;
-    console.log(this.Empresa);
     this.navCtrl.push('SignInUserPage',{Empresa : this.Empresa});
   }
 
