@@ -37,7 +37,7 @@
     <ion-input type="text" formControlName="cnh"></ion-input>
   </ion-item>
 
-  <button ion-button block color="dark">Proximo</button>
+  <button ion-button block color="dark" [disabled]="formGroup.invalid">Proximo</button>
   </form>
   
 </ion-content>

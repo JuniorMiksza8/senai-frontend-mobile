@@ -1,0 +1,62 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form [formGroup]="formGroup" (ngSubmit)="next();$event.preventDefault()">
+
+    <ion-item>
+      <ion-label stacked color="dark">Placa</ion-label>
+      <ion-input type="text" formControlName="placa"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label stacked color="dark">Marca</ion-label>
+      <ion-input type="text" formControlName="marca"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label stacked color="dark">Modelo</ion-label>
+      <ion-input type="text" formControlName="modelo"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label stacked color="dark">Ano</ion-label>
+      <ion-input type="text" formControlName="ano"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label stacked color="dark">Km</ion-label>
+      <ion-input type="text" formControlName="km"></ion-input>
+    </ion-item>
+
+    <ion-list>
+      <ion-item>
+        <ion-label>Categoria</ion-label>
+        <ion-select formControlName='categoria'>
+          <ion-option *ngFor="let categoria of categorias" value="{{categoria.id}}">{{categoria.nome}}</ion-option>        
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-item>
+        <ion-label>Disponiblidade</ion-label>
+        <ion-select formControlName="situacao">
+          <ion-option value="0" selected>Todos</ion-option>
+          <ion-option value="1">Disponivel</ion-option>
+          <ion-option value="2">Em uso</ion-option>
+          <ion-option value="3">suspenso</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  
+    <button ion-button block color="dark" [disabled]="formGroup.invalid">Finalizar</button>
+    </form>
+
+
+</ion-content>

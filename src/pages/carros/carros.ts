@@ -27,10 +27,10 @@ export class CarrosPage {
   }
 
   initializeItems(){
-    let obj = {placa : 'QXE-9399',marca : 'Fiat',modelo : 'Uno',categoria_id : 0,situacao : 1};
-    let obj2 = {placa : 'GJX-8740',marca : 'Honda',modelo : 'Titan',categoria_id : 1,situacao : 1};
-    let obj3 = {placa : 'PJG-5512',marca : 'Ford',modelo : 'Ka',categoria_id : 0,situacao : 2};
-    let obj4 = {placa : 'GJH-2934',marca : 'Honda',modelo : 'Civic',categoria_id : 0,situacao : 3};
+    let obj = {placa : 'QXE-9399',marca : 'Fiat',modelo : 'Uno',categoria_id : 0,situacao : 1,ano : 2001};
+    let obj2 = {placa : 'GJX-8740',marca : 'Honda',modelo : 'Titan',categoria_id : 1,situacao : 1,ano : 2001};
+    let obj3 = {placa : 'PJG-5512',marca : 'Ford',modelo : 'Ka',categoria_id : 0,situacao : 2,ano : 2001};
+    let obj4 = {placa : 'GJH-2934',marca : 'Honda',modelo : 'Civic',categoria_id : 0,situacao : 3,ano : 2001};
     this.Items = [
       obj,
       obj2,
@@ -67,6 +67,10 @@ export class CarrosPage {
         return (item.placa.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
+  }
+
+  next(){
+    this.navCtrl.push('CadastroCarroPage');
   }
 
 }
