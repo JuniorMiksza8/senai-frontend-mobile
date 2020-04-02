@@ -7,7 +7,7 @@
 
 <ion-content padding>
 
-  <form [formGroup]="formGroup" (ngSubmit)="next();$event.preventDefault()">
+  <form [formGroup]="formGroup">
 
     <ion-item>
       <ion-label stacked color="dark">Placa</ion-label>
@@ -55,8 +55,10 @@
       </ion-item>
     </ion-list>
   
-    <button ion-button block color="dark" [disabled]="formGroup.invalid">Finalizar</button>
+    <button ion-button block color="dark" [disabled]="formGroup.invalid" (click)="finish()">Finalizar</button>
+    
     </form>
 
+    <button ion-button block color="dark" (click)="back()" outline>Retornar</button>
 
 </ion-content>
