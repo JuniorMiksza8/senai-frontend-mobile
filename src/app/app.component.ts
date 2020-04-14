@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { StorageService } from '../services/storage.service';
+import { Usuario } from '../models/usuario';
 
 @Component({
   templateUrl: 'app.html'
@@ -13,23 +15,30 @@ export class MyApp {
 
   pages: Array<{title: string, component: string}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,public menuController : MenuController) {
+  
+
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,public menuController : MenuController,public storageService : StorageService) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
       //{ title: 'Home', component: 'HomePage' },
     ];
-
+    
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
+     
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  loadUser(){
+    return this.storageService.getLocalUser();
   }
 
   openPage(page) {
@@ -39,6 +48,7 @@ export class MyApp {
   }
 
   logout(){
+    this.storageService.setLocalUser(null);
     this.menuController.close();
     this.nav.setRoot('HomePage');
   }
