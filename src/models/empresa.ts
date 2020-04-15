@@ -1,4 +1,5 @@
 export interface Empresa {
+    idEmpresa : string,
     razaoSocial : string,
     cnpj : string,
     email : string,

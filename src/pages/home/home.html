@@ -14,12 +14,12 @@
 
       <ion-item>
         <ion-label stacked color="dark">CPF</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" name="cpf" [(ngModel)]="creds.cpf"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label stacked color="dark">SENHA</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input type="password" [(ngModel)]="creds.senhaAcesso" name="senha"></ion-input>
       </ion-item>
 
       <button ion-button block color="dark" margin-top (click)="login()">entrar</button>

@@ -10,7 +10,7 @@
 
   <img src="../../assets/imgs/admin-login-icon-png-6.png" alt="">
 
-  <form [formGroup]="formGroup" (ngSubmit)="next();$event.preventDefault()">
+  <form [formGroup]="formGroup" >
 
   <ion-item>
     <ion-label stacked color="dark">Nome</ion-label>
@@ -37,7 +37,7 @@
     <ion-input type="text" formControlName="cnh"></ion-input>
   </ion-item>
 
-  <button ion-button block color="dark" [disabled]="formGroup.invalid">Proximo</button>
+  <button ion-button block color="dark" [disabled]="formGroup.invalid" (click)="next()">Proximo</button>
   </form>
   
 </ion-content>

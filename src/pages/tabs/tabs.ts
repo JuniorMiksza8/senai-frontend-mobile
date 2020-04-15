@@ -12,6 +12,7 @@ export class TabsPage {
   tab2Root = 'RegistrarPage';
   tab3Root = 'AgendarPage'
   myIndex : number;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
