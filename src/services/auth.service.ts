@@ -11,7 +11,7 @@ export class AuthService {
     constructor(public http : HttpClient,public storageService : StorageService){}
 
     login(obj : Credenciais) : Observable<Usuario>{
-        return this.http.post<Usuario>(`${API_CONFIG.baseUrl}/Voiture/auth`,obj);
+        return this.http.post<Usuario>(`${API_CONFIG.baseUrl}/auth`,obj);
     }
 
     logout(){

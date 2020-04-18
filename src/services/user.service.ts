@@ -8,7 +8,7 @@ export class UserService {
     constructor(public http : HttpClient){}
 
     create(obj : Usuario){
-        return this.http.post(`${API_CONFIG.baseUrl}/Voiture/user`,obj,{
+        return this.http.post(`${API_CONFIG.baseUrl}/user`,obj,{
             observe  : 'response',
             responseType : 'text'
         });

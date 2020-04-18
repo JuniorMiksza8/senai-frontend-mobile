@@ -8,7 +8,7 @@ export class EmpresaService {
     constructor(public http : HttpClient){}
 
     create(empresa : Empresa){
-        return this.http.post(`${API_CONFIG.baseUrl}/Voiture/empresa`,empresa,{
+        return this.http.post(`${API_CONFIG.baseUrl}/empresa`,empresa,{
             observe  : 'response',
             responseType : 'text'
         });

@@ -8,7 +8,7 @@ export class CarroService {
     constructor(public http : HttpClient){}
 
     create(obj : Veiculo){
-        return this.http.post(`${API_CONFIG.baseUrl}/next/service`,obj,{
+        return this.http.post(`${API_CONFIG.baseUrl}/veiculo`,obj,{
             observe  : 'response',
             responseType : 'text'
         });
