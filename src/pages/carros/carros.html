@@ -10,11 +10,10 @@
   <ion-list>
     <ion-item>
       <ion-label>Disponiblidade</ion-label>
-      <ion-select [(ngModel)]="disponibilidade" (ionChange)="setDisponiblidade()">
-        <ion-option value="0" selected>Todos</ion-option>
-        <ion-option value="1">Disponivel</ion-option>
-        <ion-option value="2">Em uso</ion-option>
-        <ion-option value="3">suspenso</ion-option>
+      <ion-select [(ngModel)]="disponibilidade" (ionChange)="initializeItems($event)">
+        <ion-option value="" selected>Todos</ion-option>
+        <ion-option value="0">Disponivel</ion-option>
+        <ion-option value="1">Ocupado</ion-option>
       </ion-select>
     </ion-item>
   </ion-list>
@@ -25,7 +24,7 @@
     
 
       <ion-list>
-        <ion-item-sliding *ngFor="let item of getCarsByCategoriaAndDisponiblidade()">
+        <ion-item-sliding *ngFor="let item of Items">
   
           <ion-item>
             <ion-thumbnail item-start>
@@ -34,11 +33,10 @@
             <h2>{{item.placa}}</h2>
             <h3> {{ item.modelo }} </h3>
             
-            <ion-badge *ngIf="item.situacao == 1" item-end color="secondary" style="padding: 7px;border-radius: 15px;"> </ion-badge>
+            <ion-badge *ngIf="item.situacao == 0" item-end color="secondary" style="padding: 7px;border-radius: 15px;"> </ion-badge>
 
-            <ion-badge *ngIf="item.situacao == 2" item-end color="success" style="padding: 7px;border-radius: 15px;"> </ion-badge>
+            <ion-badge *ngIf="item.situacao == 1" item-end color="danger" style="padding: 7px;border-radius: 15px;"> </ion-badge>
 
-            <ion-badge *ngIf="item.situacao == 3" item-end color="danger" style="padding: 7px;border-radius: 15px;"> </ion-badge>
 
 
 

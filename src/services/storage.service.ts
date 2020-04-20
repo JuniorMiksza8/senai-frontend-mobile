@@ -17,6 +17,12 @@ export class StorageService{
         }
     }
 
+    getEmpresa(){
+        var obj = localStorage.getItem(STORAGE_KEYS.localUser);
+        console.log(obj);
+        return 1;
+    }
+
     setLocalUser(obj : Usuario){
         if(obj == null){
             localStorage.removeItem(STORAGE_KEYS.localUser);

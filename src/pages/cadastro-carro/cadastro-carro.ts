@@ -30,11 +30,11 @@ export class CadastroCarroPage {
 
   ionViewDidLoad() {
     var categorias = [
-      {id : 0,nome : 'Carros'},
-      {id : 1,nome : 'Motos'},
-      {id : 2,nome : 'Caminhoes'},
-      {id : 3,nome : 'Van'},
-      {id : 4,nome : 'Caminhonetes'}
+      {id : '0',nome : 'Carros'},
+      {id : '1',nome : 'Motos'},
+      {id : '2',nome : 'Caminhoes'},
+      {id : '3',nome : 'Van'},
+      {id : '4',nome : 'Caminhonetes'}
     ];
     this.categorias = categorias;
   }

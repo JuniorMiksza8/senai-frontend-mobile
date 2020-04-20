@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, LoadingController } from 'ionic-angular';
 import { Veiculo } from '../../models/veiculo';
 import { Categoria } from '../../models/categoria';
+import { CarroService } from '../../services/carro.service';
 
 
 @IonicPage()
@@ -12,56 +13,61 @@ import { Categoria } from '../../models/categoria';
 export class CarrosPage {
 
   title : string;
-  Items : Array<Veiculo> = [];
+  Items : Veiculo[] = [];
   Categoria : Categoria;
-  disponibilidade : number = 0;
+  disponibilidade : string = '';
 
-  constructor(public navCtrl: NavController,public menu : MenuController,public navParams: NavParams) {
-    this.initializeItems();
+  constructor(public navCtrl: NavController,public menu : MenuController,public navParams: NavParams,public carService : CarroService,public loadingControl : LoadingController ) {
     this.Categoria = this.navParams.get('Categoria');
     this.title = this.Categoria.nome;
   }
 
   ionViewDidLoad() { 
-    
+    this.initializeItems();
+  }
+
+  presentLoading(){
+    let loader = this.loadingControl.create({
+      content : 'Carregando...'
+    });
+
+    loader.present();
+
+    return loader;
   }
 
   initializeItems(){
-    let obj = {placa : 'QXE-9399',marca : 'Fiat',modelo : 'Uno',categoria_id : 0,situacao : 1,ano : 2001};
-    let obj2 = {placa : 'GJX-8740',marca : 'Honda',modelo : 'Titan',categoria_id : 1,situacao : 1,ano : 2001};
-    let obj3 = {placa : 'PJG-5512',marca : 'Ford',modelo : 'Ka',categoria_id : 0,situacao : 2,ano : 2001};
-    let obj4 = {placa : 'GJH-2934',marca : 'Honda',modelo : 'Civic',categoria_id : 0,situacao : 3,ano : 2001};
-    this.Items = [
-      obj,
-      obj2,
-      obj3,
-      obj4
-    ];
-  }
+    this.Items = [];
+    let loader = this.presentLoading();
+    let objs : Veiculo[] = [];
+    this.carService.list(this.Categoria.id).subscribe(response =>{
+      objs = this.Items.concat(response);
+      
+      objs.filter((obj)=>{
+        if(obj.disponibilidade == this.disponibilidade  || this.disponibilidade == ''){
+          this.Items.push(obj);
+        }
+      })
 
-  getCarsByCategoriaAndDisponiblidade(){
-    let items : Array<Veiculo> = this.Items; 
-    let itemsOfCategoria : Array<Veiculo> = [];
-    let disponibilidade = this.disponibilidade;
-    let Categoria = this.Categoria; 
-    items.forEach(function(value){
-      if(value.categoria_id == Categoria.id &&  (value.situacao == disponibilidade || disponibilidade == 0) ){
-        itemsOfCategoria.push(value);
-      }
+
+      console.log(this.Items);
+      loader.dismiss();
+    },error =>{
+      console.log(error);
+      loader.dismiss();
     });
-    return itemsOfCategoria;
-  }   
-
-  setDisponiblidade(){
-    
   }
+
+  
+
+ 
 
   getItems(ev: any) {
     this.initializeItems();
 
     const val = ev.target.value;
 
-    // if the value is an empty string don't filter the items
+    
     if (val && val.trim() != '') {
       this.Items = this.Items.filter((item) => {
         return (item.placa.toLowerCase().indexOf(val.toLowerCase()) > -1);

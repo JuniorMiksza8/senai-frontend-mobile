@@ -24,11 +24,11 @@ export class CategoriasPage {
 
   loadCategorias(){
     var categorias = [
-      {id : 0,nome : 'Carros'},
-      {id : 1,nome : 'Motos'},
-      {id : 2,nome : 'Caminhoes'},
-      {id : 3,nome : 'Van'},
-      {id : 4,nome : 'Caminhonetes'}
+      {id : '1',nome : 'Carros'},
+      {id : '2',nome : 'Motos'},
+      {id : '3',nome : 'Caminhoes'},
+      {id : '4',nome : 'Van'},
+      {id : '5',nome : 'Caminhonetes'}
     ];
     this.Categorias = categorias;
   }
