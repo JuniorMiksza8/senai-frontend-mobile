@@ -3,7 +3,8 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Categoria } from '../../models/categoria';
 import { CarroService } from '../../services/carro.service';
-
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { API_CONFIG } from '../../config/api.config';
 
 
 @IonicPage()
@@ -16,14 +17,14 @@ export class CadastroCarroPage {
   formGroup : FormGroup;
   categorias : Array<Categoria> = [];
   
-  constructor(public navCtrl: NavController,public carroService : CarroService, public navParams: NavParams,public formBuilder : FormBuilder,public alertCtrl : AlertController ) {
+  constructor(public navCtrl: NavController,public carroService : CarroService, public navParams: NavParams,public formBuilder : FormBuilder,public alertCtrl : AlertController,private iab: InAppBrowser ) {
     this.formGroup = this.formBuilder.group({
-      placa : ['',[Validators.required]],
-      km : ['',[Validators.required]],
-      modelo : ['',[Validators.required]],
-      marca : ['',[Validators.required]],
+      placa : ['555-EEE',[Validators.required]],
+      km : ['1233',[Validators.required]],
+      modelo : ['Civic',[Validators.required]],
+      marca : ['Honda',[Validators.required]],
       categoria : ['',[Validators.required]],
-      ano : ['',[Validators.required]],
+      ano : ['2001',[Validators.required]],
       situacao : ['',[Validators.required]]
     });
   }
@@ -61,6 +62,12 @@ export class CadastroCarroPage {
           handler : ()=>{
             this.navCtrl.pop();
           }
+        },
+        {
+          text : 'Ver QRCode',
+          handler : ()=>{
+            this.openURL();
+          }
         }
       ]
     });
@@ -71,4 +78,8 @@ export class CadastroCarroPage {
     this.navCtrl.setRoot('CategoriasPage');
   }
 
+  openURL(){
+    this.iab.create(`${API_CONFIG.baseUrl}`);
+    this.navCtrl.pop();
+  }
 }

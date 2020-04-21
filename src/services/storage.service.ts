@@ -18,9 +18,9 @@ export class StorageService{
     }
 
     getEmpresa(){
-        var obj = localStorage.getItem(STORAGE_KEYS.localUser);
-        console.log(obj);
-        return 1;
+        var obj = JSON.parse(localStorage.getItem(STORAGE_KEYS.localUser));
+        return obj['id_empresa'];
+         
     }
 
     setLocalUser(obj : Usuario){

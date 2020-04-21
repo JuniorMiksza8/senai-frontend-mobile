@@ -59,7 +59,9 @@ export class CarrosPage {
   }
 
   
-
+  profile(v : Veiculo){
+    this.navCtrl.push('CarProfilePage',{veiculo : v});
+  }
  
 
   getItems(ev: any) {

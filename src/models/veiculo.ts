@@ -5,7 +5,6 @@ export interface Veiculo{
     modelo : string,
     situacao : string,
     km? : string,
-    tipo? : string,
     categoria_id? : string,
     ano : string,
     disponibilidade : string

@@ -1,0 +1,44 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <img src="../assets/imgs/user.png" alt="">
+
+  
+
+  <div padding-top text-center>
+
+    
+
+    
+
+      <h3>{{v.placa}}</h3>
+
+      <ion-badge *ngIf="v.situacao == 0" item-end color="secondary" style="padding: 7px;border-radius: 15px;"> </ion-badge>
+
+      <ion-badge *ngIf="v.situacao == 1" item-end color="danger" style="padding: 7px;border-radius: 15px;" > </ion-badge>
+
+    
+
+
+    <p class="grey-text" >{{v.marca}} - {{v.modelo}}</p>
+    <p class="grey-text">{{v.cor}}</p>
+    
+
+    <hr margin>
+    
+    <p class="grey-text">Ano : {{v.ano}}</p>
+
+    <p class="grey-text">Km : {{v.km}}</p>
+
+
+    
+    
+  </div>
+
+</ion-content>

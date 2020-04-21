@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { StorageService } from '../../services/storage.service';
 
 @IonicPage()
 @Component({
@@ -16,8 +17,6 @@ export class TabsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-
-  }
+  
 
 }

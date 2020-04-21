@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -34,7 +34,8 @@ import { UserService } from '../services/user.service';
     AuthService,
     StorageService,
     EmpresaService,
-    UserService
+    UserService,
+    InAppBrowser
   ]
 })
 export class AppModule {}
