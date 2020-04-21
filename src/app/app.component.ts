@@ -13,7 +13,7 @@ export class MyApp {
   rootPage: string = 'HomePage';
 
   pages: Array<{title: string, component: string}>;
-
+   
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,public menuController : MenuController,public storageService : StorageService) {
     this.initializeApp();
 
@@ -34,9 +34,7 @@ export class MyApp {
     });
   }
 
-  loadUser(){
-    return this.storageService.getLocalUser();
-  }
+  
 
   openPage(page) {
     // Reset the content nav to have just this page
@@ -48,5 +46,10 @@ export class MyApp {
     this.storageService.setLocalUser(null);
     this.menuController.close();
     this.nav.setRoot('HomePage');
+  }
+
+  profile(){
+    this.menuController.close();
+    this.nav.push('ProfilePage');
   }
 }

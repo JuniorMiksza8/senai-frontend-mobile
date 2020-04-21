@@ -5,7 +5,12 @@
       <ion-title text-center>
         
       </ion-title>
-      <img src="../assets/imgs/user.png" alt="">
+
+
+      
+        <img src="../assets/imgs/user.png" alt="" (click)="profile()">
+      
+      
     </ion-toolbar>
   </ion-header>
 
@@ -17,10 +22,17 @@
         {{p.title}}
       </button>
       
+      <button ion-item (click)="profile()">
+        <ion-icon item-start name="ios-contact"></ion-icon>
+        Perfil
+      </button>
+
       <button ion-item (click)="logout()">
         <ion-icon item-start name="exit"></ion-icon>
         Logout
       </button>
+
+      
     </ion-list>
     
   </ion-content>
