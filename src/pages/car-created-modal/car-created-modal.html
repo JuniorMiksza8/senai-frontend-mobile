@@ -1,0 +1,61 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title *ngIf="veiculo">
+      {{veiculo.placa}} 
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button (click)="fechar()">fechar</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-fab top right>
+    <button ion-fab ><ion-icon name="add"></ion-icon></button>
+    <ion-fab-list side="down">        
+      <button ion-fab mini color="light" (click)="edit()"><ion-icon name="md-create" color="primary" class="add"></ion-icon></button>
+      <button ion-fab mini color="light" (click)="delete()"><ion-icon name="md-trash" color="danger" class="add"></ion-icon></button>
+      <button ion-fab color="light" (click)="putAway()"><ion-icon name="md-power" color="success" class="add"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <div *ngIf="veiculo">
+    
+    <ion-badge *ngIf="veiculo.situacao == 0"  color="secondary" style="padding: 7px;border-radius: 15px;">Disponivel</ion-badge>
+
+    <ion-badge *ngIf="veiculo.situacao == 1"  color="danger" style="padding: 7px;border-radius: 15px;" >Ocupado</ion-badge>
+
+    <img src="../../assets/icon/{{veiculo.id_categoria}}.png" alt="">
+
+      <div text-center >
+
+
+      <h3 class="grey-text" >{{veiculo.marca}} - {{veiculo.modelo}}</h3>
+      <h4 class="grey-text">{{veiculo.cor}}</h4>
+      
+      <p class="grey-text">Ano : {{veiculo.ano}}</p>
+
+      <p class="grey-text">Km : {{veiculo.km}}</p>
+        
+      <hr margin>
+  
+        <qrcode padding [qrdata]='veiculo.hash' [size]="256" [level]="'M'"></qrcode>
+        
+      
+        <button outline large ion-button block margin-top>
+          PDF <ion-icon name="md-download" padding-left color="primary"></ion-icon>
+        </button>
+
+        <button ion-button color="secondary" (click)="agendar()" block large outline>
+          AGENDAR <ion-icon name="ios-arrow-dropright-outline" padding-left color="secondary" class="add"></ion-icon>
+        </button>
+        
+
+      
+      </div>
+  </div>
+
+</ion-content>

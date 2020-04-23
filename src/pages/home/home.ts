@@ -60,7 +60,7 @@ export class HomePage {
       loader.dismiss(); 
     },error =>{
       console.log(error);
-      let toast = this.presentToast('Falha ao efetuar login');
+      this.presentToast('Falha ao efetuar login');
       loader.dismiss();
     });
   }

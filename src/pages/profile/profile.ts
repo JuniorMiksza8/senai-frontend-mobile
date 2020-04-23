@@ -19,7 +19,6 @@ export class ProfilePage {
 
   ionViewWillLoad() {
     this.user = this.storageService.getLocalUser();
-    console.log(this.user);
   }
 
 

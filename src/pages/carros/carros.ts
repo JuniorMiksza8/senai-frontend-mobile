@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, LoadingController, ModalController } from 'ionic-angular';
 import { Veiculo } from '../../models/veiculo';
 import { Categoria } from '../../models/categoria';
 import { CarroService } from '../../services/carro.service';
@@ -17,7 +17,7 @@ export class CarrosPage {
   Categoria : Categoria;
   disponibilidade : string = '';
 
-  constructor(public navCtrl: NavController,public menu : MenuController,public navParams: NavParams,public carService : CarroService,public loadingControl : LoadingController ) {
+  constructor(public navCtrl: NavController,public menu : MenuController,public navParams: NavParams,public carService : CarroService,public loadingControl : LoadingController,public modalController : ModalController ) {
     this.Categoria = this.navParams.get('Categoria');
     this.title = this.Categoria.nome;
   }
@@ -49,8 +49,6 @@ export class CarrosPage {
         }
       })
 
-
-      console.log(this.Items);
       loader.dismiss();
     },error =>{
       console.log(error);
@@ -60,7 +58,8 @@ export class CarrosPage {
 
   
   profile(v : Veiculo){
-    this.navCtrl.push('CarProfilePage',{veiculo : v});
+    let modal = this.modalController.create('CarCreatedModalPage',{id : v.id_veiculo});
+    modal.present();
   }
  
 

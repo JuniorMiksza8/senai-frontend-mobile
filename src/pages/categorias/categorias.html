@@ -9,10 +9,12 @@
   <ion-list>
     <button ion-item *ngFor="let item of Categorias" (click)="showVeiculo(item)">
       <ion-thumbnail item-start>
-        <img src="../../assets/icon/{{item.nome}}.png" alt="">
+        <img src="../../assets/icon/{{item.id}}.png" alt="">
       </ion-thumbnail>
       <h2> {{ item.nome }} </h2>
     </button>
   </ion-list>
+
+  
 
 </ion-content>

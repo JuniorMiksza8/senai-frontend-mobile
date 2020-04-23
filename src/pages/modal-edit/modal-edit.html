@@ -1,0 +1,50 @@
+<div class="modal">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Editar</ion-title>
+      <ion-buttons end>
+        <button ion-button (click)="dismiss()">
+          <span ion-text color="primary" showWhen="ios">Cancel</span>
+          <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+    
+    <div *ngIf="veiculo">
+      <form [formGroup]="formGroup" (ngSubmit)="finish();$event.preventDefault()">
+
+        <ion-item>
+          <ion-label position="stacked">Placa</ion-label>
+          <ion-input  formControlName="placa"></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label position="stacked">Modelo</ion-label>
+          <ion-input  formControlName="modelo"></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label position="stacked">Marca</ion-label>
+          <ion-input  formControlName="marca"></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label position="stacked">Ano</ion-label>
+          <ion-input  formControlName="ano"></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label position="stacked">Cor</ion-label>
+          <ion-input  formControlName="cor"></ion-input>
+        </ion-item>
+    
+        <button ion-button block [disabled]="formGroup.invalid" color="secondary" margin-top>Salvar</button>
+  
+      </form>
+    </div>
+
+  </ion-content>
+</div>

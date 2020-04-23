@@ -12,6 +12,7 @@ import { AuthService } from '../services/auth.service';
 import { StorageService } from '../services/storage.service';
 import { EmpresaService } from '../services/empresa-service';
 import { UserService } from '../services/user.service';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { UserService } from '../services/user.service';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
+    QRCodeModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

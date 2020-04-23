@@ -23,6 +23,11 @@
       <ion-label stacked color="dark">Modelo</ion-label>
       <ion-input type="text" formControlName="modelo"></ion-input>
     </ion-item>
+
+    <ion-item>
+      <ion-label stacked color="dark">Cor</ion-label>
+      <ion-input type="text" formControlName="cor"></ion-input>
+    </ion-item>
   
     <ion-item>
       <ion-label stacked color="dark">Ano</ion-label>
@@ -45,12 +50,20 @@
 
     <ion-list>
       <ion-item>
-        <ion-label>Disponiblidade</ion-label>
+        <ion-label>Situação</ion-label>
         <ion-select formControlName="situacao">
-          <ion-option value="0" selected>Todos</ion-option>
-          <ion-option value="1">Disponivel</ion-option>
-          <ion-option value="2">Em uso</ion-option>
-          <ion-option value="3">suspenso</ion-option>
+          <ion-option value="0">Disponivel</ion-option>
+          <ion-option value="1">Em uso</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-item>
+        <ion-label>Disponibilidade</ion-label>
+        <ion-select formControlName="disponibilidade">
+          <ion-option value="0">Disponivel</ion-option>
+          <ion-option value="1">Suspenso</ion-option>
         </ion-select>
       </ion-item>
     </ion-list>

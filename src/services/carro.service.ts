@@ -10,15 +10,32 @@ export class CarroService {
     constructor(public http : HttpClient,public storage :StorageService){}
 
     create(obj : Veiculo){
-        return this.http.post(`${API_CONFIG.baseUrl}/veiculo`,obj,{
+        return this.http.post(`${API_CONFIG.baseUrl}/veiculo?empresa=${this.storage.getEmpresa()}`,obj,{
             observe  : 'response',
             responseType : 'text'
         });
     }
 
     list(id : string) : Observable<Veiculo[]>{
-        console.log('Empresa : ' + this.storage.getEmpresa());
         return this.http.get<Veiculo[]>(`${API_CONFIG.baseUrl}/veiculo?categoria=${id}&empresa=${this.storage.getEmpresa()}`);
+    }
+
+    read(id : string) : Observable<Veiculo>{
+        return this.http.get<Veiculo>(`${API_CONFIG.baseUrl}/veiculo?veiculo=${id}&empresa=${this.storage.getEmpresa()}`);
+    }
+
+    delete(id : string){
+        return this.http.delete(`${API_CONFIG.baseUrl}/veiculo`,{
+            observe : 'response',
+            responseType : 'text'
+        });
+    }
+
+    edit(obj : Veiculo){
+        return this.http.put(`${API_CONFIG.baseUrl}/veiculo`,obj,{
+            observe  : 'response',
+            responseType : 'text'
+        });
     }
     
 }

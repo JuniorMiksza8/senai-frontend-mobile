@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ModalController, LoadingController, ToastController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Categoria } from '../../models/categoria';
 import { CarroService } from '../../services/carro.service';
@@ -17,61 +17,80 @@ export class CadastroCarroPage {
   formGroup : FormGroup;
   categorias : Array<Categoria> = [];
   
-  constructor(public navCtrl: NavController,public carroService : CarroService, public navParams: NavParams,public formBuilder : FormBuilder,public alertCtrl : AlertController,private iab: InAppBrowser ) {
+  constructor(public navCtrl: NavController,public carroService : CarroService, public navParams: NavParams,
+    public formBuilder : FormBuilder,public alertCtrl : AlertController,private iab: InAppBrowser, private modalControl : ModalController,private loadingControl : LoadingController,
+    public toastController : ToastController
+    ) {
+
     this.formGroup = this.formBuilder.group({
       placa : ['555-EEE',[Validators.required]],
       km : ['1233',[Validators.required]],
       modelo : ['Civic',[Validators.required]],
       marca : ['Honda',[Validators.required]],
-      categoria : ['',[Validators.required]],
+      categoria : ['1',[Validators.required]],
       ano : ['2001',[Validators.required]],
-      situacao : ['',[Validators.required]]
+      situacao : ['1',[Validators.required]],
+      cor : ['Branco',Validators.required],
+      disponibilidade : ['1',[Validators.required]]
     });
+
   }
 
   ionViewDidLoad() {
     var categorias = [
-      {id : '0',nome : 'Carros'},
-      {id : '1',nome : 'Motos'},
-      {id : '2',nome : 'Caminhoes'},
-      {id : '3',nome : 'Van'},
-      {id : '4',nome : 'Caminhonetes'}
+      {id : '1',nome : 'Carros'},
+      {id : '2',nome : 'Motos'},
+      {id : '3',nome : 'Caminhoes'},
+      {id : '4',nome : 'Van'},
+      {id : '5',nome : 'Caminhonetes'}
     ];
     this.categorias = categorias;
   }
 
   finish(){
-    /*
+    let loader = this.presentLoading();
     this.carroService.create(this.formGroup.value).subscribe(response=>{
-      this.showInsertOk('Carro cadastrado com sucesso','OK');
+      loader.dismiss();
+      this.showInsertOk('Veiculo registrado com sucesso');
+      let obj = response.body;
+      let id = JSON.parse(obj);
+      this.showModal(id.id);
+      this.navCtrl.pop();
     },error=>{
-      this.showInsertOk('Falha ao registrar veiculo,tente novamente mais tarde.','Erro');
+      loader.dismiss();
+      this.showInsertOk('Falha ao registrar veiculo');
     });
-    */
-   this.showInsertOk('Carro cadastrado com sucesso','OK');
+    
   }
 
-  showInsertOk(msg : string,title : string){
-    let alert = this.alertCtrl.create({
-      title : title,
-      message : msg,
-      enableBackdropDismiss : false,
-      buttons: [
-        {
-          text : 'Ok',
-          handler : ()=>{
-            this.navCtrl.pop();
-          }
-        },
-        {
-          text : 'Ver QRCode',
-          handler : ()=>{
-            this.openURL();
-          }
-        }
-      ]
+  presentLoading(){
+    let loader = this.loadingControl.create({
+      content : 'Cadastrando...'
     });
-    alert.present();
+
+    loader.present();
+
+    return loader;
+  }
+
+  
+
+  showInsertOk(msg : string){
+  
+    const toast = this.toastController.create({
+      message: msg,
+      duration: 3000
+    });
+    toast.present();
+    return toast;
+
+  }
+
+  showModal(id : string){
+
+    let modal = this.modalControl.create('CarCreatedModalPage',{id : id});
+    modal.present();
+    return modal;  
   }
 
   back(){
@@ -82,4 +101,6 @@ export class CadastroCarroPage {
     this.iab.create(`${API_CONFIG.baseUrl}`);
     this.navCtrl.pop();
   }
+
+
 }
