@@ -38,7 +38,7 @@ export class CarrosPage {
 
   initializeItems(){
     this.Items = [];
-    let loader = this.presentLoading();
+
     let objs : Veiculo[] = [];
     this.carService.list(this.Categoria.id).subscribe(response =>{
       objs = this.Items.concat(response);
@@ -49,10 +49,10 @@ export class CarrosPage {
         }
       })
 
-      loader.dismiss();
+      
     },error =>{
       console.log(error);
-      loader.dismiss();
+
     });
   }
 
@@ -63,18 +63,7 @@ export class CarrosPage {
   }
  
 
-  getItems(ev: any) {
-    this.initializeItems();
-
-    const val = ev.target.value;
-
-    
-    if (val && val.trim() != '') {
-      this.Items = this.Items.filter((item) => {
-        return (item.placa.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
-    }
-  }
+  
 
   next(){
     this.navCtrl.push('CadastroCarroPage');

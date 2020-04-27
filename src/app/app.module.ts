@@ -13,6 +13,7 @@ import { StorageService } from '../services/storage.service';
 import { EmpresaService } from '../services/empresa-service';
 import { UserService } from '../services/user.service';
 import { QRCodeModule } from 'angularx-qrcode';
+import { QRService } from '../services/qr.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { QRCodeModule } from 'angularx-qrcode';
     StorageService,
     EmpresaService,
     UserService,
-    InAppBrowser
+    InAppBrowser,
+    QRService
   ]
 })
 export class AppModule {}

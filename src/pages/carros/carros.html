@@ -1,12 +1,17 @@
 
-<ion-header>
-  <ion-navbar>
-    <ion-title>{{title}}</ion-title>
+<ion-header transparent>
+  <ion-navbar no-border>
+    
+    <ion-title>
+      {{title}}
+    </ion-title>
+
   </ion-navbar>
 </ion-header>
 
 <ion-content >
 
+  
   <ion-list>
     <ion-item>
       <ion-label>Disponiblidade</ion-label>
@@ -17,16 +22,10 @@
       </ion-select>
     </ion-item>
   </ion-list>
-
-
-    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-
     
 
       <ion-list>
-        <ion-item-sliding *ngFor="let item of Items">
-  
-          <ion-item>
+          <button ion-item *ngFor="let item of Items" (click)="profile(item)">
             <ion-thumbnail item-start>
               <img src="../../assets/icon/{{Categoria.id}}.png" alt="">
             </ion-thumbnail>
@@ -37,35 +36,7 @@
 
             <ion-badge *ngIf="item.situacao == 1" item-end color="danger" style="padding: 7px;border-radius: 15px;"> </ion-badge>
 
-
-
-
-          </ion-item>
-  
-          <ion-item-options side="left">
-            <button ion-button color="danger">
-            <ion-icon name="trash"></ion-icon>
-              Remover
-            </button>
-            <button ion-button color="success">
-            <ion-icon name="settings"></ion-icon>
-              Editar
-            </button>
-          </ion-item-options>
-  
-          <ion-item-options side="right">
-            <button ion-button color="primary" (click)="profile(item)">
-              <ion-icon name="information" class="icon20"></ion-icon>
-              Info
-            </button>
-            <button ion-button color="secondary">
-              <ion-icon name="checkmark" class="icon20"></ion-icon>
-              Agendar
-            </button>
-          </ion-item-options>
-  
-        </ion-item-sliding>
-  
+          </button>        
       </ion-list> 
 
       

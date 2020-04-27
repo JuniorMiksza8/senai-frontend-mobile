@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavParams, ViewController, LoadingController, AlertController, ToastController, ModalController } from 'ionic-angular';
 import { Veiculo } from '../../models/veiculo';
 import { CarroService } from '../../services/carro.service';
+import { API_CONFIG } from '../../config/api.config';
 
 
 
@@ -13,7 +14,8 @@ import { CarroService } from '../../services/carro.service';
 export class CarCreatedModalPage {
 
   veiculo : Veiculo;
-  
+  api : string;
+
   constructor(private vc : ViewController, public navParams: NavParams,public toastCtrl : ToastController,
     public carroService : CarroService,public lodingControl : LoadingController,public alertCtrl : AlertController,public modalCtrl : ModalController
     ) {
@@ -31,12 +33,14 @@ export class CarCreatedModalPage {
     let load = this.loader();
     this.carroService.read(id).subscribe(response=>{   
       this.veiculo = response;
+      this.api = `${API_CONFIG.baseUrl}/barcode?id=${this.veiculo.id_veiculo}&tipo=1`;
       load.dismiss();
     },error=>{
       console.log(error);
       load.dismiss();
     });
-   
+    
+    ;
 
   }
 
@@ -54,7 +58,10 @@ export class CarCreatedModalPage {
   }
 
 
-  
+  pdf(){
+    window.open(this.api, '_system', 'location=yes');
+  }
+
   delete() {
     let alert = this.alertCtrl.create({
       title: 'Confirme exclusão',
@@ -81,6 +88,8 @@ export class CarCreatedModalPage {
     modal.present();
   }
   
+  
+
   notificate(msg : string){
     let toast = this.toastCtrl.create({
       message : msg,

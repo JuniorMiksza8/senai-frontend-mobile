@@ -1,16 +1,15 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Login</ion-title>
+<ion-header no-border>
+  <ion-navbar transparent>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content fullscreen>
   
 
-  <img src="../../assets/imgs/login-rounded.png" alt="logo">
+  <img src="../../assets/imgs/logo.png" alt="logo">
 
 
-    <form>
+    <form padding>
 
       <ion-item>
         <ion-label stacked color="dark">CPF</ion-label>
@@ -23,8 +22,9 @@
       </ion-item>
 
       <button ion-button block color="dark" margin-top (click)="login()">entrar</button>
+      <button ion-button block outline color="dark" (click)="signIn()">registrar</button>
     </form>
 
-      <button ion-button block outline color="dark" (click)="signIn()">registrar</button>
+      
 
 </ion-content>

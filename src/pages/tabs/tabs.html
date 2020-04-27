@@ -1,13 +1,5 @@
-<ion-header>
-  <ion-navbar color="dark">
-    <button ion-button menuToggle>
-      <ion-icon name="menu" color="light"></ion-icon>
-    </button>
-    <ion-title>Painel</ion-title> 
-  </ion-navbar>
-</ion-header>
 
-<ion-tabs [selectedIndex]="myIndex" color="dark">
+<ion-tabs [selectedIndex]="myIndex" class="tabs">
   <ion-tab [root]="tab1Root" tabTitle="Frota" tabIcon="home"></ion-tab>
   <ion-tab [root]="tab2Root" tabTitle="Registrar" tabIcon="add-circle"></ion-tab>
   <ion-tab [root]="tab3Root" tabTitle="Agendar" tabIcon="bookmark"></ion-tab>
