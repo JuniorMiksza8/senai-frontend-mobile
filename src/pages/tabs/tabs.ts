@@ -9,8 +9,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class TabsPage {
 
   tab1Root = 'CategoriasPage';
-  tab2Root = 'RegistrarPage';
-  tab3Root = 'AgendarPage'
+  tab3Root = 'AgendarPage';
+  tab4Root = 'UsersPage';
   myIndex : number;
   
   constructor(public navCtrl: NavController, public navParams: NavParams) {

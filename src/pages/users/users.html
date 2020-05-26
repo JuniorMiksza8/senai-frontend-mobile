@@ -1,0 +1,25 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Usuarios</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <button ion-item *ngFor="let item of items" (click)="profile(item)">
+      <ion-thumbnail item-start padding>
+        <ion-icon name="contact"></ion-icon>
+      </ion-thumbnail>
+      <h2>{{item.nome_func}}</h2>
+      <h3> {{ item.telefone }} </h3>
+      
+      <ion-badge *ngIf="item.disponibilidade == 0" item-end color="secondary" style="padding: 7px;border-radius: 15px;"> </ion-badge>
+
+      <ion-badge *ngIf="item.disponibilidade == 1" item-end color="danger" style="padding: 7px;border-radius: 15px;"> </ion-badge>
+
+    </button>        
+</ion-list> 
+
+</ion-content>

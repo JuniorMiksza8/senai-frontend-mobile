@@ -1,9 +1,10 @@
 export interface Usuario {
-    idEmpresa : string,
-    id : string,
-    nome : string,
+    id_empresa : string,
+    id_func : string,
+    nome_func : string,
     email : string,
     telefone : string,
-    cnh : string ,
-    cpf : string
+    nCNH : string ,
+    cpf : string ,
+    disponibilidade : string
 }
