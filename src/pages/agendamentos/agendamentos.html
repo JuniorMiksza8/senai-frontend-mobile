@@ -1,0 +1,42 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Agendamentos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div *ngIf="agendamentos">
+    <div *ngFor="let item of agendamentos"> 
+
+      <ion-list>
+        <button ion-item (click)="profile(item)">
+
+          <ion-thumbnail item-start padding>
+            <ion-icon name="ios-bookmark" *ngIf="item.dataHora_chegada" ></ion-icon>    
+            <ion-icon name="ios-bookmark-outline"  *ngIf="!item.dataHora_chegada"></ion-icon>        
+          </ion-thumbnail>
+
+          <h2>Veiculo : {{item.placa}}</h2>
+          <h3>Usuario : {{item.email}} </h3>
+          <h3>Data de saida : {{item.dataHora_saida}}</h3>
+          <h3>Data de retorno : {{item.dataHora_chegada}}</h3>  
+
+        </button>        
+      </ion-list> 
+    </div>
+  </div>
+
+
+  <ion-fab bottom right>
+    <button ion-fab mini color="light" (click)="scan()">
+      <ion-icon name="add-circle" color="dark" class="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>

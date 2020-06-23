@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { Usuario } from '../../models/usuario';
 import { StorageService } from '../../services/storage.service';
 import { UserService } from '../../services/user.service';
+import { API_CONFIG } from '../../config/api.config';
 
 
 @IonicPage()
@@ -21,10 +22,11 @@ export class ProfilePage {
   ionViewWillLoad() {
     if(this.navParams.get('user')){
       var temp = this.navParams.get('user');
+      console.log(temp);
       this.userService.find(temp.id_func).subscribe(response =>{
         this.user = response;
         console.log(this.user);
-      },error =>{});
+      },error =>{console.log(error)});
     }else{
       this.user = this.storageService.getLocalUser();
     }
@@ -47,6 +49,8 @@ export class ProfilePage {
     });
   }
 
-  
+  pdf(){
+    window.open(`${API_CONFIG.baseUrl}/barcode?id=${this.user.id_func}&tipo=2`, '_system', 'location=yes');
+  }
   
 }

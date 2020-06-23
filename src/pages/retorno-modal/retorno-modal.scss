@@ -1,0 +1,19 @@
+page-retorno-modal {
+    background-color: rgba(0, 0, 0, 0.5);
+    .modal{
+        position: absolute;
+        top: 20%;
+        left: 10%;
+        display: block;
+        width: 80%;
+        height: 50%;
+        border-radius: 20px;
+        ion-toolbar{
+            border-radius: 20px;
+            text-align: center;
+        }
+        ion-content{
+            border-radius: 20px;
+        }
+    }
+}

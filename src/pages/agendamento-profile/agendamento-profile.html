@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div *ngIf="agendamento">
+    
+    <ion-badge *ngIf="agendamento.situacao == 0"  color="secondary" style="padding: 7px;border-radius: 15px;">Disponivel</ion-badge>
+
+    <ion-badge *ngIf="agendamento.situacao == 1"  color="danger" style="padding: 7px;border-radius: 15px;" >Ocupado</ion-badge>
+
+      <div text-center >
+
+      <img src="../../assets/imgs/3129573.jpg" alt="">
+
+      <h3 class="grey-text" >{{agendamento.nome_func}}</h3>
+      <h4 class="grey-text">{{agendamento.modelo}} - {{agendamento.placa}}</h4>
+      <p class="grey-text">{{agendamento.origem}} -> {{agendamento.destino}}</p>
+      
+      <p class="grey-text">saida <br> {{agendamento.dataHora_saida}} <br> km : {{agendamento.km_saida}}</p>
+
+      <p class="grey-text">chegada <br>{{agendamento.dataHora_chegada}} <br> km : {{agendamento.km_chegada}}</p>
+
+      
+        
+      <hr margin>        
+
+        <button ion-button *ngIf="!agendamento.dataHora_chegada" color="secondary" (click)="checkout()" block large outline>
+          Retorno <ion-icon name="ios-arrow-dropleft-outline" padding-left color="secondary" class="add"></ion-icon>
+        </button>       
+      
+      </div>
+  </div>
+
+</ion-content>

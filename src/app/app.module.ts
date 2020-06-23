@@ -14,6 +14,8 @@ import { EmpresaService } from '../services/empresa-service';
 import { UserService } from '../services/user.service';
 import { QRCodeModule } from 'angularx-qrcode';
 import { QRService } from '../services/qr.service';
+import { QRScanner } from '@ionic-native/qr-scanner';
+import { AgendamentoService } from '../services/agendamento.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { QRService } from '../services/qr.service';
     EmpresaService,
     UserService,
     InAppBrowser,
-    QRService
+    QRService,
+    QRScanner,
+    AgendamentoService
   ]
 })
 export class AppModule {}

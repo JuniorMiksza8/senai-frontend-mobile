@@ -1,3 +1,3 @@
 export const API_CONFIG = {
-    baseUrl : "http://192.168.0.107:8080/Voiture",
+    baseUrl : "http://7ff419af2ab7.ngrok.io/Voiture",
 }

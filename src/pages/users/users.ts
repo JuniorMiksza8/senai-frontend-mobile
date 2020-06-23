@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Refresher } from 'ionic-angular';
 import { Usuario } from '../../models/usuario';
 import { UserService } from '../../services/user.service';
 
@@ -22,7 +22,12 @@ export class UsersPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,public userService : UserService) {
   }
 
-  ionViewWillLoad(){
+  ngOnInit(){
+    this.load();
+  }
+
+
+  load(){
     this.userService.list().subscribe(response=>{
       console.log(response);
       this.items = response;
@@ -31,6 +36,15 @@ export class UsersPage {
 
   profile(item){
     this.navCtrl.push('ProfilePage',{user : item});
+  }
+
+  register(){
+    this.navCtrl.push('RegistrarPage');
+  }
+
+  doRefresh(refresher){
+    this.load();
+    refresher.complete();
   }
 
 }

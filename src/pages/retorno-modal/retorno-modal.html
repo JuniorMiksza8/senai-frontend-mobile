@@ -1,0 +1,27 @@
+
+<div class="modal">
+  <ion-header>
+    <ion-navbar>
+      <ion-title>Retorno</ion-title>
+      <ion-buttons end>
+        <button ion-button (click)="dismiss()">
+          <span ion-text color="primary" showWhen="ios">Cancel</span>
+          <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+
+    <ion-item>
+      <ion-label position="stacked" stacked>KM de retorno</ion-label>
+      <ion-input  [(ngModel)]="km"></ion-input>
+    </ion-item>
+  
+    <button ion-button block color="secondary" (click)="checkout()" margin-top>Retornar</button>
+
+  </ion-content>
+
+
+</div>

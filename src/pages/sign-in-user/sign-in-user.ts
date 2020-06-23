@@ -29,7 +29,8 @@ export class SignInUserPage {
       email : ['teste@gmail.com',[Validators.required,Validators.email]],
       telefone : ['199971481471',[Validators.required,Validators.minLength(11),Validators.maxLength(11)]],
       cnh : ['1823812812',[Validators.required,Validators.minLength(11),Validators.maxLength(11)]],
-      cpf : ['1293912391',[Validators.required,Validators.minLength(11),Validators.maxLength(11)]]
+      cpf : ['1293912391',[Validators.required,Validators.minLength(11),Validators.maxLength(11)]],
+      disponibilidade : ['true']
     });
     
   }
@@ -63,13 +64,14 @@ export class SignInUserPage {
     let loader = this.presentLoading();
     Usuario.idEmpresa = this.Empresa.idEmpresa;
         //Registra admin
-        this.userService.create(Usuario).subscribe(response=>{
+        this.userService.register(Usuario,Empresa).subscribe(response=>{  
         loader.dismiss();
         this.presentToast('Cadastro realizado com sucesso!');
         this.navCtrl.setRoot('ConfirmSigninPage',{Empresa : Empresa,Usuario : Usuario});
       },error =>{
         loader.dismiss();
         let erro = JSON.parse(error.error);
+        console.log(Usuario);
         this.presentToast(erro.erro);
       });
   }

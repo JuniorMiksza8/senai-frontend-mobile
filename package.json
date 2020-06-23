@@ -19,6 +19,7 @@
     "@angular/forms": "5.2.11",
     "@angular/platform-browser": "5.2.11",
     "@angular/platform-browser-dynamic": "5.2.11",
+    "@ionic-native/android-permissions": "^5.26.0",
     "@ionic-native/core": "4.20.0",
     "@ionic-native/in-app-browser": "^5.24.0",
     "@ionic-native/qr-scanner": "^4.20.0",
@@ -27,6 +28,7 @@
     "@ionic/storage": "2.2.0",
     "angularx-qrcode": "^1.6.4",
     "cordova-android": "8.1.0",
+    "cordova-plugin-android-permissions": "1.0.2",
     "cordova-plugin-inappbrowser": "3.2.0",
     "cordova-plugin-qrscanner": "3.0.1",
     "ionic-angular": "3.9.9",
@@ -57,7 +59,8 @@
       },
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-qrscanner": {},
-      "cordova-plugin-inappbrowser": {}
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-android-permissions": {}
     },
     "platforms": [
       "android"
